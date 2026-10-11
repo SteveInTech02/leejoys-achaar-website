@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Visit us — LeeJoys Achaar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Dancing+Script:wght@600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/mascot.png">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="wrap nav-in">
+            <a class="logo" href="index.html">
+                <img src="images/mascot.png" alt="LeeJoys Achaar chilli chef logo">
+                <div>
+                    <b>LeeJoys</b>
+                    <span>ACHAAR</span>
+                </div>
+            </a>
+
+            <ul class="links" id="links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="story.html">Our story</a></li>
+                <li><a href="visit.html" class="on" aria-current="page">Visit us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">☰</button>
+        </div>
+    </nav>
+
+    <main class="page" id="main">
+        <section class="ph-hero">
+            <div class="wrap">
+                <span class="pill">Visit us</span>
+                <h1 class="h2" style="font-size:clamp(2rem,5vw,3.2rem)">Come buy in store</h1>
+                <p class="lead" style="color:#4a2a18">LeeJoy Express, 29 Woltemade Street, Witbank 1035.</p>
+            </div>
+        </section>
+
+        <section class="sec">
+            <div class="wrap split" style="align-items:start;gap:34px">
+                <div class="map">
+                    <svg viewBox="0 0 600 460" role="img" aria-label="Illustrative map showing the shop on Woltemade Street">
+                        <rect width="600" height="460" fill="#FBE7BE"/>
+                        <rect x="40" y="40" width="150" height="120" rx="10" fill="#C5E1A5"/>
+                        <rect x="420" y="250" width="140" height="150" rx="10" fill="#C5E1A5"/>
+
+                        <g stroke="#fff" stroke-linecap="round" fill="none">
+                            <path d="M0 330H600" stroke-width="22"/>
+                            <path d="M300 0V460" stroke-width="22"/>
+                            <path d="M0 120L600 210" stroke-width="14"/>
+                            <path d="M110 460L220 200" stroke-width="12"/>
+                            <path d="M450 0L520 460" stroke-width="12"/>
+                        </g>
+
+                        <g fill="#7a4a30" font-family="DM Sans,sans-serif" font-weight="700" font-size="14">
+                            <text x="330" y="322">Woltemade Street</text>
+                            <text x="50" y="30">Witbank</text>
+                        </g>
+
+                        <g transform="translate(300 330)">
+                            <circle r="46" fill="#D7261E" opacity=".2"/>
+                            <path d="M0 0C-26-30-34-48-22-66A28 28 0 0122-66C34-48 26-30 0 0z" transform="translate(0 -8)" fill="#D7261E" stroke="#fff" stroke-width="4"/>
+                            <circle cy="-62" r="10" fill="#fff"/>
+                        </g>
+
+                        <rect x="190" y="372" width="220" height="40" rx="20" fill="#D7261E"/>
+                        <text x="300" y="398" text-anchor="middle" fill="#fff" font-family="DM Sans,sans-serif" font-weight="700" font-size="15">LeeJoy Express · No. 29</text>
+                    </svg>
+                </div>
+
+                <div>
+                    <div class="card" style="--c:var(--red)">
+                        <div class="bd" style="padding:26px">
+                            <div class="status">
+                                <span class="dot" data-dot></span>
+                                <span data-st>Checking hours…</span>
+                            </div>
+
+                            <span class="pill" style="background:var(--orange);margin-bottom:8px">Trading hours</span>
+
+                            <ul class="hours">
+                                <li>
+                                    <span>Monday – Friday</span>
+                                    <span>09:00 – 18:00</span>
+                                </li>
+                                <li>
+                                    <span>Saturday</span>
+                                    <span>09:00 – 17:00</span>
+                                </li>
+                                <li>
+                                    <span>Sunday &amp; public holidays</span>
+                                    <span>Closed</span>
+                                </li>
+                            </ul>
+
+                            <p style="margin:16px 0 4px;color:var(--text)">
+                                <b>29 Woltemade Street</b><br>
+                                Witbank 1035
+                            </p>
+
+                            <p style="font-size:.88rem;margin-bottom:16px">The map is an illustration. Tap below for live directions.</p>
+
+                            <a class="btn b-red" href="https://www.google.com/maps/search/?api=1&query=29+Woltemade+Street+Witbank+1035" target="_blank" rel="noopener">Get directions</a>
+                        </div>
+                    </div>
+
+                    <div class="card" style="margin-top:20px;--c:var(--orange)">
+                        <img src="images/store.jpg" alt="LeeJoy Express shopfront">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="wrap">
+            <div class="fg">
+                <div>
+                    <div class="logo" style="margin-bottom:12px">
+                        <img src="images/mascot.png" alt="" style="width:50px;height:60px">
+                        <div>
+                            <b style="color:#2F5A1E">LeeJoys</b>
+                            <span style="color:var(--fx)">ACHAAR</span>
+                        </div>
+                    </div>
+                    <p style="font-size:.93rem;max-width:30ch">The taste is worth your last cent. Est. 2022.</p>
+                </div>
+
+                <div>
+                    <h4>Pages</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="story.html">Our story</a></li>
+                        <li><a href="visit.html">Visit us</a></li>
+                        <li><a href="contact.html">Contact us</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4>Trading hours</h4>
+                    <ul>
+                        <li>Mon – Fri: 09:00 – 18:00</li>
+                        <li>Saturday: 09:00 – 17:00</li>
+                        <li>Sunday &amp; public holidays: closed</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4>For orders</h4>
+                    <ul>
+                        <li><a href="https://wa.me/27728001306">WhatsApp: 072 800 1306</a></li>
+                        <li><a href="tel:+27795668291">Call: 079 566 8291</a></li>
+                        <li><a href="mailto:leejoysatchaar@gmail.com">email: leejoysatchaar@gmail.com</a></li>
+                        <li>29 Woltemade Street, Witbank 1035</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="fb">
+                <span>© 2026 LeeJoys Achaar</span>
+                <span>Buy in store, or order online and collect.</span>
+            </div>
+        </div>
+    </footer>
+<!-- 
+    <a class="wa" href="https://wa.me/27728001306" target="_blank" rel="noopener" aria-label="WhatsApp us">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2a10 10 0 00-8.6 15L2 22l5.1-1.3A10 10 0 1012 2zm5 13.6c-.2.6-1.2 1.1-1.7 1.2-.4.1-1 .1-1.6-.1-2.8-1.1-4.500-3.800-4.600-4-.1-.2-1-1.300-1-2.500s.6-1.800.9-2h.5c.2 0 .4 0 .6.5l.8 2-.3.5-.4.4c.2.4 1 1.800 2.500 2.500l.8-1c.2-.3.4-.2.6-.1l1.900.9c.3.1.5.2.5.3z"/>
+        </svg>
+    </a> -->
+
+    <script src="js/main.js"></script>
+</body>
+</html>
