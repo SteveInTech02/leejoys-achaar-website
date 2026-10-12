@@ -1,0 +1,2162 @@
+/* =========================================
+   1. ROOT VARIABLES & GLOBAL STYLES
+   Defines the website's colors and base styles
+   ========================================= */
+
+:root {
+  /* Theme colors */
+  --orange: #F6A623;
+  --sun: #FFE2A0;
+  --red: #D7261E;
+  --green: #4F8A3C;
+  --brown: #C4531A;
+
+  /* Text and background colors */
+  --fx: #2A1710;
+  --bg: #FFFBF0;
+  --alt: #FFEFC9;
+  --card: #fff;
+  --text: #2A1710;
+  --muted: #6E4F3F;
+
+  /* Respect safe areas on phones with notches */
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Apply consistent box sizing to all elements */
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* Enable smooth scrolling between sections */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Base typography and page background */
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 400 16px/1.6 'DM Sans', sans-serif;
+}
+
+/* Make images responsive */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Use the current text color for links */
+a {
+  color: inherit;
+}
+
+/* Reset heading and paragraph spacing */
+h1, h2, h3 {
+  margin: 0;
+  line-height: 1.12;
+}
+
+p {
+  margin: 0 0 12px;
+}
+
+/* Special typography classes */
+.disp {
+  font-family: 'Archivo Black', sans-serif;
+}
+
+.script {
+  font-family: 'Dancing Script', cursive;
+  font-weight: 700;
+  color: var(--green);
+}
+
+/* Center content and limit its maximum width */
+.wrap {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 22px;
+}
+
+/* Make keyboard focus clearly visible */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--brown);
+  outline-offset: 2px;
+}
+
+/* Disable transitions and smooth scrolling when
+   the user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* =========================================
+   2. NAVIGATION BAR
+   Sticky header, logo, links, and mobile menu
+   ========================================= */
+
+/* Keep navigation visible while scrolling */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--orange);
+  padding-top: env(safe-area-inset-top, 0px);
+  color: var(--fx);
+  box-shadow: 0 4px 14px -8px rgba(80, 30, 10, .5);
+}
+
+/* Arrange logo and navigation links horizontally */
+.nav-in {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+  gap: 12px;
+}
+
+/* Logo container */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+/* Logo image dimensions */
+.logo img {
+  width: 44px;
+  height: 54px;
+  object-fit: contain;
+}
+
+/* Script-style brand name */
+.logo b {
+  display: block;
+  font: 700 1.25rem/1 'Dancing Script', cursive;
+  color: #2F5A1E;
+}
+
+/* Bold secondary logo text */
+.logo span {
+  font: 1.2rem/1 'Archivo Black';
+}
+
+/* Desktop navigation links */
+.links {
+  display: flex;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Individual navigation link */
+.links a {
+  display: block;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 9px 13px;
+  border-radius: 999px;
+  font-size: .92rem;
+}
+
+/* Highlight links when hovered */
+.links a:hover {
+  background: rgba(255, 255, 255, .5);
+}
+
+/* Highlight the active navigation page */
+.links a.on {
+  background: #fff;
+  color: var(--red);
+}
+
+/* Mobile menu toggle button */
+.burger {
+  display: none;
+  background: #fff;
+  border: 0;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  font-size: 1.3rem;
+}
+
+/* Switch to a collapsible menu on smaller screens */
+@media (max-width: 980px) {
+  .burger {
+    display: block;
+  }
+
+  /* Hide links until the menu is opened */
+  .links {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    background: var(--orange);
+    flex-direction: column;
+    padding: 6px 16px 16px;
+  }
+
+  /* Show menu links when JavaScript adds .open */
+  .links.open {
+    display: flex;
+  }
+
+  /* Make mobile navigation links easier to tap */
+  .links a {
+    background: rgba(255, 255, 255, .4);
+    margin-top: 6px;
+  }
+}
+
+
+/* =========================================
+   3. BUTTONS AND BADGES
+   Reusable buttons and small label elements
+   ========================================= */
+
+/* Rounded pill-shaped label */
+.pill {
+  display: inline-block;
+  background: #fff;
+  color: var(--fx);
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 8px 24px;
+  font-size: 1rem;
+  box-shadow: 0 4px 10px -6px rgba(80, 30, 10, .5);
+}
+
+/* Shared button styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  padding: 13px 26px;
+  font: 700 1rem 'DM Sans';
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Red primary action button */
+.b-red {
+  background: var(--red);
+  color: #fff;
+}
+
+.b-red:hover {
+  background: #b01d16;
+}
+
+/* Green button using the brown-themed class name */
+.b-brown {
+  background: var(--green);
+  color: #fff;
+}
+
+.b-brown:hover {
+  background: #3d6e2d;
+}
+
+/* White button variation */
+.b-white {
+  background: #fff;
+  color: var(--fx);
+}
+
+/* Green button variation */
+.b-green {
+  background: var(--green);
+  color: #fff;
+}
+
+/* Transparent outlined button */
+.b-line {
+  border-color: currentColor;
+  background: transparent;
+}
+
+
+/* =========================================
+   4. GENERAL SECTION LAYOUTS
+   Section spacing, backgrounds, and headings
+   ========================================= */
+
+/* Standard vertical section spacing */
+.sec {
+  padding: 68px 0;
+}
+
+/* Alternate background for visual separation */
+.alt {
+  background: var(--alt);
+}
+
+/* Warm gradient background panel */
+.brownbox {
+  background: linear-gradient(135deg, #FFD97A, #FFC857);
+  color: var(--fx);
+}
+
+/* Reusable section heading */
+.h2 {
+  font: 700 clamp(1.7rem, 4vw, 2.5rem) 'Fraunces', serif;
+  margin: 12px 0 10px;
+}
+
+/* Introductory paragraph with readable line length */
+.lead {
+  color: var(--muted);
+  max-width: 60ch;
+}
+
+/* Improve text contrast inside gradient panels */
+.brownbox .lead {
+  color: #4a2a18;
+}
+
+/* Arrange heading and action link in one row */
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+/* Section link */
+.more {
+  font-weight: 700;
+  color: var(--red);
+  text-decoration: none;
+}
+
+.more:hover {
+  text-decoration: underline;
+}
+
+/* Keep links visible on gradient backgrounds */
+.brownbox .more {
+  color: var(--red);
+}
+
+/* Generic page container */
+.page {
+  display: block;
+}
+
+/* Inner-page hero banner */
+.ph-hero {
+  background: linear-gradient(120deg, var(--orange), #F9BE55);
+  padding: 52px 0;
+  position: relative;
+  overflow: hidden;
+  color: var(--fx);
+}
+
+/* Decorative circle in the hero banner */
+.ph-hero::after {
+  content: "";
+  position: absolute;
+  right: -70px;
+  top: -70px;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: #fff;
+  opacity: .35;
+}
+
+
+/* =========================================
+   5. RESPONSIVE GRID SYSTEM
+   Reusable two-, three-, and four-column layouts
+   ========================================= */
+
+/* Base CSS grid layout */
+.grid {
+  display: grid;
+  gap: 22px;
+}
+
+/* Three-column grid */
+.g3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* Two-column grid */
+.g2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+/* Four-column grid */
+.g4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Reduce larger grids to two columns on tablets */
+@media (max-width: 960px) {
+  .g3, .g4 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Stack all grids on mobile screens */
+@media (max-width: 680px) {
+  .g2, .g3, .g4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* =========================================
+   6. CONTENT CARDS
+   Card backgrounds, images, tags, and placeholders
+   ========================================= */
+
+/* Main card container */
+.card {
+  background: var(--card);
+  border-radius: 24px;
+  overflow: hidden;
+  border-top: 6px solid var(--c, var(--orange));
+  box-shadow: 0 14px 28px -18px rgba(90, 35, 12, .55);
+}
+
+/* Card image container with a consistent ratio */
+.card .ph {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+/* Crop images to fill the card image area */
+.card .ph img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Spacing around card content */
+.bd {
+  padding: 18px 22px 22px;
+}
+
+/* Card heading */
+.card h3 {
+  font: 700 1.15rem 'Fraunces', serif;
+  margin-bottom: 6px;
+}
+
+/* Card description */
+.card p {
+  color: var(--muted);
+  font-size: .93rem;
+  margin: 0;
+}
+
+/* Colored category tag */
+.tag {
+  display: inline-block;
+  background: var(--c, var(--orange));
+  color: #fff;
+  font-weight: 700;
+  font-size: .76rem;
+  border-radius: 999px;
+  padding: 3px 12px;
+  margin-bottom: 10px;
+}
+
+/* Decorative placeholder for content coming soon */
+.soon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 100%;
+  background: repeating-linear-gradient(
+    45deg,
+    #FFE9B8,
+    #FFE9B8 12px,
+    #FFDD94 12px,
+    #FFDD94 24px
+  );
+  color: #7A2E1A;
+  font-weight: 700;
+  font-size: .82rem;
+  text-align: center;
+}
+
+/* Placeholder icon dimensions */
+.soon svg {
+  width: 46px;
+  height: 46px;
+}
+
+/* Circular image with a white border */
+.circ {
+  border-radius: 50%;
+  overflow: hidden;
+  border: 6px solid #fff;
+  box-shadow: 0 12px 24px -10px rgba(60, 20, 8, .6);
+}
+
+/* Ensure circular images fill their containers */
+.circ img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* =========================================
+   7. MAIN HOMEPAGE HERO
+   Introductory banner and decorative imagery
+   ========================================= */
+
+/* Main hero background and spacing */
+.hero {
+  background: linear-gradient(
+    135deg,
+    var(--orange) 0%,
+    #F9B93F 100%
+  );
+  padding: 50px 0 0;
+  overflow: hidden;
+  color: var(--fx);
+}
+
+/* Split hero into text and image columns */
+.hero-g {
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap: 26px;
+  align-items: center;
+}
+
+/* Large display heading */
+.hero h1 {
+  font: clamp(3.2rem, 9vw, 5.8rem) 'Archivo Black';
+}
+
+/* Decorative script text above or below the heading */
+.hero .script {
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  display: block;
+  margin-bottom: -6px;
+  color: #2F5A1E;
+}
+
+/* Small establishment or introductory label */
+.est {
+  font-weight: 700;
+  letter-spacing: .2em;
+  font-size: .85rem;
+  margin: 4px 0 8px;
+  color: #7a4510;
+}
+
+/* Short promotional tagline */
+.tagline {
+  color: #B3170F;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 22px;
+}
+
+/* Arrange hero buttons and allow wrapping */
+.btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-bottom: 48px;
+}
+
+/* Position decorative hero images */
+.bw {
+  position: relative;
+  min-height: 400px;
+}
+
+/* Large colored background shape behind hero images */
+.blob {
+  position: absolute;
+  right: -90px;
+  top: -50px;
+  bottom: 0;
+  width: 118%;
+  background: linear-gradient(160deg, #F2562F, #D7261E);
+  border-radius: 55% 0 0 0 / 45% 0 0 0;
+}
+
+/* Main circular hero image */
+.c1 {
+  position: absolute;
+  width: 290px;
+  height: 290px;
+  right: 70px;
+  top: 12px;
+}
+
+/* Smaller circular decorative image */
+.c2 {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  left: 8px;
+  bottom: 22px;
+}
+
+/* Decorative mascot image */
+.mas {
+  position: absolute;
+  width: 130px;
+  left: 26px;
+  top: 0;
+  filter: drop-shadow(0 8px 10px rgba(0, 0, 0, .3));
+}
+
+/* Mobile and tablet hero adjustments */
+@media (max-width: 860px) {
+  /* Stack text above imagery */
+  .hero-g {
+    grid-template-columns: 1fr;
+  }
+
+  /* Give decorative images more horizontal space */
+  .bw {
+    min-height: 350px;
+    margin: 0 -22px;
+  }
+
+  /* Center the background shape on smaller screens */
+  .blob {
+    right: 0;
+    width: 100%;
+    border-radius: 50% 50% 0 0 / 28% 28% 0 0;
+  }
+
+  /* Resize and center the main image */
+  .c1 {
+    right: 50%;
+    margin-right: -110px;
+    width: 230px;
+    height: 230px;
+    top: 26px;
+  }
+
+  /* Resize the secondary image */
+  .c2 {
+    width: 120px;
+    height: 120px;
+    left: 20px;
+    bottom: 14px;
+  }
+
+  /* Move mascot to the upper-right corner */
+  .mas {
+    width: 100px;
+    left: auto;
+    right: 18px;
+    top: 18px;
+  }
+}
+
+
+/* =========================================
+   8. SPLIT CONTENT SECTIONS
+   Two-column text and image layouts
+   ========================================= */
+
+/* Align two content columns vertically */
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 44px;
+  align-items: center;
+}
+
+/* Stack split sections on smaller screens */
+@media (max-width: 800px) {
+  .split {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* =========================================
+   9. ICONS AND INFORMATION ROWS
+   Reusable icon containers and linked rows
+   ========================================= */
+
+/* Circular icon background */
+.ic {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--c, var(--orange));
+  color: #fff;
+  display: grid;
+  place-items: center;
+  margin-bottom: 12px;
+}
+
+/* Size icons inside circular containers */
+.ic svg {
+  width: 26px;
+  height: 26px;
+}
+
+/* Vertical list of information rows */
+.rows {
+  display: grid;
+  gap: 12px;
+}
+
+/* Individual information row */
+.row {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  background: var(--card);
+  border-radius: 20px;
+  padding: 16px 18px;
+  text-decoration: none;
+  border-left: 6px solid var(--c, var(--orange));
+  box-shadow: 0 10px 22px -16px rgba(90, 35, 12, .6);
+}
+
+/* Circular icon inside an information row */
+.row i {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--c, var(--orange));
+  display: grid;
+  place-items: center;
+  color: #fff;
+}
+
+/* Icon dimensions inside rows */
+.row i svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* Row title */
+.row b {
+  display: block;
+}
+
+/* Supporting row description */
+.row span {
+  color: var(--muted);
+  font-size: .92rem;
+}
+
+
+/* =========================================
+   10. FORMS AND OPENING HOURS
+   Input fields, status indicators, and schedules
+   ========================================= */
+
+/* Shared form input styling */
+.field {
+  width: 100%;
+  border: 2px solid rgba(122, 46, 26, .25);
+  border-radius: 14px;
+  padding: 12px 14px;
+  font: inherit;
+  background: var(--card);
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+/* Remove default list styling from opening hours */
+.hours {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Arrange each day and its hours on one line */
+.hours li {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 11px 0;
+  border-bottom: 1px solid rgba(122, 46, 26, .18);
+  font-weight: 700;
+}
+
+/* Opening time text */
+.hours li span:last-child {
+  font-weight: 400;
+  opacity: .85;
+}
+
+/* Status label with a colored indicator */
+.status {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+/* Default status dot */
+.dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #aaa;
+}
+
+/* Green dot for open status */
+.dot.o {
+  background: #2E9B4E;
+}
+
+/* Red dot for closed status */
+.dot.c {
+  background: var(--red);
+}
+
+
+/* =========================================
+   11. MAP AND STEP-BY-STEP CARDS
+   Map graphics and numbered instructions
+   ========================================= */
+
+/* Map container with rounded corners */
+.map {
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 14px 28px -18px rgba(90, 35, 12, .6);
+}
+
+/* Make map SVG scale to the container width */
+.map svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Automatically number elements in a steps section */
+.steps {
+  counter-reset: s;
+}
+
+/* Prepare each step card for its number */
+.steps .card {
+  position: relative;
+  padding-top: 6px;
+}
+
+/* Display the automatically generated step number */
+.steps .card::before {
+  counter-increment: s;
+  content: counter(s);
+  position: absolute;
+  right: 16px;
+  top: 10px;
+  font: 2rem 'Archivo Black';
+  color: var(--orange);
+  opacity: .8;
+}
+
+
+/* =========================================
+   12. PROMOTIONAL BANNER
+   Full-width call-to-action section
+   ========================================= */
+
+/* Red-orange promotional background */
+.band {
+  background: linear-gradient(120deg, var(--red), #E8541C);
+  color: #fff;
+  text-align: center;
+  padding: 56px 0;
+}
+
+/* Large numbers or promotional statistics */
+.band .nums {
+  font: clamp(1.5rem, 4.5vw, 2.5rem) 'Archivo Black';
+  margin: 16px 0 6px;
+}
+
+/* Remove underlines from banner links */
+.band a {
+  text-decoration: none;
+}
+
+
+/* =========================================
+   13. FOOTER
+   Footer columns, headings, and copyright row
+   ========================================= */
+
+/* Footer background and top border */
+footer {
+  background: #FFEFC9;
+  color: var(--text);
+  padding: 52px 0 22px;
+  border-top: 8px solid var(--orange);
+}
+
+/* Four-column footer layout */
+.fg {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+  gap: 28px;
+  margin-bottom: 30px;
+}
+
+/* Reduce footer columns on tablets */
+@media (max-width: 900px) {
+  .fg {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Stack footer columns on mobile */
+@media (max-width: 560px) {
+  .fg {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Footer column headings */
+footer h4 {
+  color: var(--red);
+  font: .95rem 'Archivo Black';
+  margin: 0 0 12px;
+}
+
+/* Remove bullets and arrange footer links vertically */
+footer ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+/* Footer links */
+footer a {
+  text-decoration: none;
+  font-size: .93rem;
+}
+
+/* Highlight footer links on hover */
+footer a:hover {
+  color: var(--red);
+}
+
+/* Bottom copyright and legal information row */
+.fb {
+  border-top: 1px solid rgba(122, 46, 26, .2);
+  padding-top: 18px;
+  font-size: .82rem;
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+
+/* =========================================
+   14. FLOATING WHATSAPP BUTTON
+   Fixed contact button near the bottom-right
+   ========================================= */
+
+/* Keep WhatsApp accessible while scrolling */
+.wa {
+  position: fixed;
+  right: 16px;
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  z-index: 60;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25D366;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, .3);
+}
+
+/* WhatsApp icon dimensions and color */
+.wa svg {
+  width: 30px;
+  height: 30px;
+  color: #fff;
+}
+
+
+/* =========================================
+   15. HERO LABELS AND TRUST INDICATORS
+   Small badges and supporting credibility details
+   ========================================= */
+
+/* Small pill-shaped hero label */
+.htag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border-radius: 999px;
+  padding: 6px 14px 6px 10px;
+  font-weight: 700;
+  font-size: .8rem;
+  margin-bottom: 14px;
+}
+
+/* Status indicator inside the hero label */
+.htag i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--green);
+}
+
+/* Flexible row of trust indicators */
+.trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  font-weight: 700;
+  font-size: .85rem;
+  margin: 0 0 20px;
+  color: #4a2a18;
+}
+
+/* Prevent individual trust labels from wrapping */
+.trust span {
+  white-space: nowrap;
+}
+
+
+/* =========================================
+   16. DECORATIVE SEAL
+   Positioned badge or logo overlay in the hero
+   ========================================= */
+
+/* Place the seal at the bottom-right of its container */
+.seal {
+  position: absolute;
+  width: 104px;
+  right: 14px;
+  bottom: 14px;
+  filter: drop-shadow(0 8px 14px rgba(60, 20, 8, .35));
+}
+
+/* Make the seal smaller on mobile devices */
+@media (max-width: 860px) {
+  .seal {
+    width: 84px;
+    right: 14px;
+    bottom: 12px;
+  }
+}/* =========================================
+   1. ROOT VARIABLES & GLOBAL STYLES
+   Defines the website's colors and base styles
+   ========================================= */
+
+:root {
+  /* Theme colors */
+  --orange: #F6A623;
+  --sun: #FFE2A0;
+  --red: #D7261E;
+  --green: #4F8A3C;
+  --brown: #C4531A;
+
+  /* Text and background colors */
+  --fx: #2A1710;
+  --bg: #FFFBF0;
+  --alt: #FFEFC9;
+  --card: #fff;
+  --text: #2A1710;
+  --muted: #6E4F3F;
+
+  /* Respect safe areas on phones with notches */
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Apply consistent box sizing to all elements */
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* Enable smooth scrolling between sections */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Base typography and page background */
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 400 16px/1.6 'DM Sans', sans-serif;
+}
+
+/* Make images responsive */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Use the current text color for links */
+a {
+  color: inherit;
+}
+
+/* Reset heading and paragraph spacing */
+h1, h2, h3 {
+  margin: 0;
+  line-height: 1.12;
+}
+
+p {
+  margin: 0 0 12px;
+}
+
+/* Special typography classes */
+.disp {
+  font-family: 'Archivo Black', sans-serif;
+}
+
+.script {
+  font-family: 'Dancing Script', cursive;
+  font-weight: 700;
+  color: var(--green);
+}
+
+/* Center content and limit its maximum width */
+.wrap {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 22px;
+}
+
+/* Make keyboard focus clearly visible */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--brown);
+  outline-offset: 2px;
+}
+
+/* Disable transitions and smooth scrolling when
+   the user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* =========================================
+   2. NAVIGATION BAR
+   Sticky header, logo, links, and mobile menu
+   ========================================= */
+
+/* Keep navigation visible while scrolling */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--orange);
+  padding-top: env(safe-area-inset-top, 0px);
+  color: var(--fx);
+  box-shadow: 0 4px 14px -8px rgba(80, 30, 10, .5);
+}
+
+/* Arrange logo and navigation links horizontally */
+.nav-in {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+  gap: 12px;
+}
+
+/* Logo container */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+/* Logo image dimensions */
+.logo img {
+  width: 44px;
+  height: 54px;
+  object-fit: contain;
+}
+
+/* Script-style brand name */
+.logo b {
+  display: block;
+  font: 700 1.25rem/1 'Dancing Script', cursive;
+  color: #2F5A1E;
+}
+
+/* Bold secondary logo text */
+.logo span {
+  font: 1.2rem/1 'Archivo Black';
+}
+
+/* Desktop navigation links */
+.links {
+  display: flex;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Individual navigation link */
+.links a {
+  display: block;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 9px 13px;
+  border-radius: 999px;
+  font-size: .92rem;
+}
+
+/* Highlight links when hovered */
+.links a:hover {
+  background: rgba(255, 255, 255, .5);
+}
+
+/* Highlight the active navigation page */
+.links a.on {
+  background: #fff;
+  color: var(--red);
+}
+
+/* Mobile menu toggle button */
+.burger {
+  display: none;
+  background: #fff;
+  border: 0;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  font-size: 1.3rem;
+}
+
+/* Switch to a collapsible menu on smaller screens */
+@media (max-width: 980px) {
+  .burger {
+    display: block;
+  }
+
+  /* Hide links until the menu is opened */
+  .links {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    background: var(--orange);
+    flex-direction: column;
+    padding: 6px 16px 16px;
+  }
+
+  /* Show menu links when JavaScript adds .open */
+  .links.open {
+    display: flex;
+  }
+
+  /* Make mobile navigation links easier to tap */
+  .links a {
+    background: rgba(255, 255, 255, .4);
+    margin-top: 6px;
+  }
+}
+
+
+/* =========================================
+   3. BUTTONS AND BADGES
+   Reusable buttons and small label elements
+   ========================================= */
+
+/* Rounded pill-shaped label */
+.pill {
+  display: inline-block;
+  background: #fff;
+  color: var(--fx);
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 8px 24px;
+  font-size: 1rem;
+  box-shadow: 0 4px 10px -6px rgba(80, 30, 10, .5);
+}
+
+/* Shared button styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  padding: 13px 26px;
+  font: 700 1rem 'DM Sans';
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Red primary action button */
+.b-red {
+  background: var(--red);
+  color: #fff;
+}
+
+.b-red:hover {
+  background: #b01d16;
+}
+
+/* Green button using the brown-themed class name */
+.b-brown {
+  background: var(--green);
+  color: #fff;
+}
+
+.b-brown:hover {
+  background: #3d6e2d;
+}
+
+/* White button variation */
+.b-white {
+  background: #fff;
+  color: var(--fx);
+}
+
+/* Green button variation */
+.b-green {
+  background: var(--green);
+  color: #fff;
+}
+
+/* Transparent outlined button */
+.b-line {
+  border-color: currentColor;
+  background: transparent;
+}
+
+
+/* =========================================
+   4. GENERAL SECTION LAYOUTS
+   Section spacing, backgrounds, and headings
+   ========================================= */
+
+/* Standard vertical section spacing */
+.sec {
+  padding: 68px 0;
+}
+
+/* Alternate background for visual separation */
+.alt {
+  background: var(--alt);
+}
+
+/* Warm gradient background panel */
+.brownbox {
+  background: linear-gradient(135deg, #FFD97A, #FFC857);
+  color: var(--fx);
+}
+
+/* Reusable section heading */
+.h2 {
+  font: 700 clamp(1.7rem, 4vw, 2.5rem) 'Fraunces', serif;
+  margin: 12px 0 10px;
+}
+
+/* Introductory paragraph with readable line length */
+.lead {
+  color: var(--muted);
+  max-width: 60ch;
+}
+
+/* Improve text contrast inside gradient panels */
+.brownbox .lead {
+  color: #4a2a18;
+}
+
+/* Arrange heading and action link in one row */
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+/* Section link */
+.more {
+  font-weight: 700;
+  color: var(--red);
+  text-decoration: none;
+}
+
+.more:hover {
+  text-decoration: underline;
+}
+
+/* Keep links visible on gradient backgrounds */
+.brownbox .more {
+  color: var(--red);
+}
+
+/* Generic page container */
+.page {
+  display: block;
+}
+
+/* Inner-page hero banner */
+.ph-hero {
+  background: linear-gradient(120deg, var(--orange), #F9BE55);
+  padding: 52px 0;
+  position: relative;
+  overflow: hidden;
+  color: var(--fx);
+}
+
+/* Decorative circle in the hero banner */
+.ph-hero::after {
+  content: "";
+  position: absolute;
+  right: -70px;
+  top: -70px;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: #fff;
+  opacity: .35;
+}
+
+
+/* =========================================
+   5. RESPONSIVE GRID SYSTEM
+   Reusable two-, three-, and four-column layouts
+   ========================================= */
+
+/* Base CSS grid layout */
+.grid {
+  display: grid;
+  gap: 22px;
+}
+
+/* Three-column grid */
+.g3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* Two-column grid */
+.g2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+/* Four-column grid */
+.g4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Reduce larger grids to two columns on tablets */
+@media (max-width: 960px) {
+  .g3, .g4 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Stack all grids on mobile screens */
+@media (max-width: 680px) {
+  .g2, .g3, .g4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* =========================================
+   6. CONTENT CARDS
+   Card backgrounds, images, tags, and placeholders
+   ========================================= */
+
+/* Main card container */
+.card {
+  background: var(--card);
+  border-radius: 24px;
+  overflow: hidden;
+  border-top: 6px solid var(--c, var(--orange));
+  box-shadow: 0 14px 28px -18px rgba(90, 35, 12, .55);
+}
+
+/* Card image container with a consistent ratio */
+.card .ph {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+/* Crop images to fill the card image area */
+.card .ph img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Spacing around card content */
+.bd {
+  padding: 18px 22px 22px;
+}
+
+/* Card heading */
+.card h3 {
+  font: 700 1.15rem 'Fraunces', serif;
+  margin-bottom: 6px;
+}
+
+/* Card description */
+.card p {
+  color: var(--muted);
+  font-size: .93rem;
+  margin: 0;
+}
+
+/* Colored category tag */
+.tag {
+  display: inline-block;
+  background: var(--c, var(--orange));
+  color: #fff;
+  font-weight: 700;
+  font-size: .76rem;
+  border-radius: 999px;
+  padding: 3px 12px;
+  margin-bottom: 10px;
+}
+
+/* Decorative placeholder for content coming soon */
+.soon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 100%;
+  background: repeating-linear-gradient(
+    45deg,
+    #FFE9B8,
+    #FFE9B8 12px,
+    #FFDD94 12px,
+    #FFDD94 24px
+  );
+  color: #7A2E1A;
+  font-weight: 700;
+  font-size: .82rem;
+  text-align: center;
+}
+
+/* Placeholder icon dimensions */
+.soon svg {
+  width: 46px;
+  height: 46px;
+}
+
+/* Circular image with a white border */
+.circ {
+  border-radius: 50%;
+  overflow: hidden;
+  border: 6px solid #fff;
+  box-shadow: 0 12px 24px -10px rgba(60, 20, 8, .6);
+}
+
+/* Ensure circular images fill their containers */
+.circ img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* =========================================
+   7. MAIN HOMEPAGE HERO
+   Introductory banner and decorative imagery
+   ========================================= */
+
+/* Main hero background and spacing */
+.hero {
+  background: linear-gradient(
+    135deg,
+    var(--orange) 0%,
+    #F9B93F 100%
+  );
+  padding: 50px 0 0;
+  overflow: hidden;
+  color: var(--fx);
+}
+
+/* Split hero into text and image columns */
+.hero-g {
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap: 26px;
+  align-items: center;
+}
+
+/* Large display heading */
+.hero h1 {
+  font: clamp(3.2rem, 9vw, 5.8rem) 'Archivo Black';
+}
+
+/* Decorative script text above or below the heading */
+.hero .script {
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  display: block;
+  margin-bottom: -6px;
+  color: #2F5A1E;
+}
+
+/* Small establishment or introductory label */
+.est {
+  font-weight: 700;
+  letter-spacing: .2em;
+  font-size: .85rem;
+  margin: 4px 0 8px;
+  color: #7a4510;
+}
+
+/* Short promotional tagline */
+.tagline {
+  color: #B3170F;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 22px;
+}
+
+/* Arrange hero buttons and allow wrapping */
+.btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-bottom: 48px;
+}
+
+/* Position decorative hero images */
+.bw {
+  position: relative;
+  min-height: 400px;
+}
+
+/* Large colored background shape behind hero images */
+.blob {
+  position: absolute;
+  right: -90px;
+  top: -50px;
+  bottom: 0;
+  width: 118%;
+  background: linear-gradient(160deg, #F2562F, #D7261E);
+  border-radius: 55% 0 0 0 / 45% 0 0 0;
+}
+
+/* Main circular hero image */
+.c1 {
+  position: absolute;
+  width: 290px;
+  height: 290px;
+  right: 70px;
+  top: 12px;
+}
+
+/* Smaller circular decorative image */
+.c2 {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  left: 8px;
+  bottom: 22px;
+}
+
+/* Decorative mascot image */
+.mas {
+  position: absolute;
+  width: 130px;
+  left: 26px;
+  top: 0;
+  filter: drop-shadow(0 8px 10px rgba(0, 0, 0, .3));
+}
+
+/* Mobile and tablet hero adjustments */
+@media (max-width: 860px) {
+  /* Stack text above imagery */
+  .hero-g {
+    grid-template-columns: 1fr;
+  }
+
+  /* Give decorative images more horizontal space */
+  .bw {
+    min-height: 350px;
+    margin: 0 -22px;
+  }
+
+  /* Center the background shape on smaller screens */
+  .blob {
+    right: 0;
+    width: 100%;
+    border-radius: 50% 50% 0 0 / 28% 28% 0 0;
+  }
+
+  /* Resize and center the main image */
+  .c1 {
+    right: 50%;
+    margin-right: -110px;
+    width: 230px;
+    height: 230px;
+    top: 26px;
+  }
+
+  /* Resize the secondary image */
+  .c2 {
+    width: 120px;
+    height: 120px;
+    left: 20px;
+    bottom: 14px;
+  }
+
+  /* Move mascot to the upper-right corner */
+  .mas {
+    width: 100px;
+    left: auto;
+    right: 18px;
+    top: 18px;
+  }
+}
+
+
+/* =========================================
+   8. SPLIT CONTENT SECTIONS
+   Two-column text and image layouts
+   ========================================= */
+
+/* Align two content columns vertically */
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 44px;
+  align-items: center;
+}
+
+/* Stack split sections on smaller screens */
+@media (max-width: 800px) {
+  .split {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* =========================================
+   9. ICONS AND INFORMATION ROWS
+   Reusable icon containers and linked rows
+   ========================================= */
+
+/* Circular icon background */
+.ic {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--c, var(--orange));
+  color: #fff;
+  display: grid;
+  place-items: center;
+  margin-bottom: 12px;
+}
+
+/* Size icons inside circular containers */
+.ic svg {
+  width: 26px;
+  height: 26px;
+}
+
+/* Vertical list of information rows */
+.rows {
+  display: grid;
+  gap: 12px;
+}
+
+/* Individual information row */
+.row {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  background: var(--card);
+  border-radius: 20px;
+  padding: 16px 18px;
+  text-decoration: none;
+  border-left: 6px solid var(--c, var(--orange));
+  box-shadow: 0 10px 22px -16px rgba(90, 35, 12, .6);
+}
+
+/* Circular icon inside an information row */
+.row i {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--c, var(--orange));
+  display: grid;
+  place-items: center;
+  color: #fff;
+}
+
+/* Icon dimensions inside rows */
+.row i svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* Row title */
+.row b {
+  display: block;
+}
+
+/* Supporting row description */
+.row span {
+  color: var(--muted);
+  font-size: .92rem;
+}
+
+
+/* =========================================
+   10. FORMS AND OPENING HOURS
+   Input fields, status indicators, and schedules
+   ========================================= */
+
+/* Shared form input styling */
+.field {
+  width: 100%;
+  border: 2px solid rgba(122, 46, 26, .25);
+  border-radius: 14px;
+  padding: 12px 14px;
+  font: inherit;
+  background: var(--card);
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+/* Remove default list styling from opening hours */
+.hours {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Arrange each day and its hours on one line */
+.hours li {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 11px 0;
+  border-bottom: 1px solid rgba(122, 46, 26, .18);
+  font-weight: 700;
+}
+
+/* Opening time text */
+.hours li span:last-child {
+  font-weight: 400;
+  opacity: .85;
+}
+
+/* Status label with a colored indicator */
+.status {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+/* Default status dot */
+.dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #aaa;
+}
+
+/* Green dot for open status */
+.dot.o {
+  background: #2E9B4E;
+}
+
+/* Red dot for closed status */
+.dot.c {
+  background: var(--red);
+}
+
+
+/* =========================================
+   11. MAP AND STEP-BY-STEP CARDS
+   Map graphics and numbered instructions
+   ========================================= */
+
+/* Map container with rounded corners */
+.map {
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 14px 28px -18px rgba(90, 35, 12, .6);
+}
+
+/* Make map SVG scale to the container width */
+.map svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Automatically number elements in a steps section */
+.steps {
+  counter-reset: s;
+}
+
+/* Prepare each step card for its number */
+.steps .card {
+  position: relative;
+  padding-top: 6px;
+}
+
+/* Display the automatically generated step number */
+.steps .card::before {
+  counter-increment: s;
+  content: counter(s);
+  position: absolute;
+  right: 16px;
+  top: 10px;
+  font: 2rem 'Archivo Black';
+  color: var(--orange);
+  opacity: .8;
+}
+
+
+/* =========================================
+   12. PROMOTIONAL BANNER
+   Full-width call-to-action section
+   ========================================= */
+
+/* Red-orange promotional background */
+.band {
+  background: linear-gradient(120deg, var(--red), #E8541C);
+  color: #fff;
+  text-align: center;
+  padding: 56px 0;
+}
+
+/* Large numbers or promotional statistics */
+.band .nums {
+  font: clamp(1.5rem, 4.5vw, 2.5rem) 'Archivo Black';
+  margin: 16px 0 6px;
+}
+
+/* Remove underlines from banner links */
+.band a {
+  text-decoration: none;
+}
+
+
+/* =========================================
+   13. FOOTER
+   Footer columns, headings, and copyright row
+   ========================================= */
+
+/* Footer background and top border */
+footer {
+  background: #FFEFC9;
+  color: var(--text);
+  padding: 52px 0 22px;
+  border-top: 8px solid var(--orange);
+}
+
+/* Four-column footer layout */
+.fg {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+  gap: 28px;
+  margin-bottom: 30px;
+}
+
+/* Reduce footer columns on tablets */
+@media (max-width: 900px) {
+  .fg {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Stack footer columns on mobile */
+@media (max-width: 560px) {
+  .fg {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Footer column headings */
+footer h4 {
+  color: var(--red);
+  font: .95rem 'Archivo Black';
+  margin: 0 0 12px;
+}
+
+/* Remove bullets and arrange footer links vertically */
+footer ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+/* Footer links */
+footer a {
+  text-decoration: none;
+  font-size: .93rem;
+}
+
+/* Highlight footer links on hover */
+footer a:hover {
+  color: var(--red);
+}
+
+/* Bottom copyright and legal information row */
+.fb {
+  border-top: 1px solid rgba(122, 46, 26, .2);
+  padding-top: 18px;
+  font-size: .82rem;
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+
+/* =========================================
+   14. FLOATING WHATSAPP BUTTON
+   Fixed contact button near the bottom-right
+   ========================================= */
+
+/* Keep WhatsApp accessible while scrolling */
+.wa {
+  position: fixed;
+  right: 16px;
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  z-index: 60;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25D366;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, .3);
+}
+
+/* WhatsApp icon dimensions and color */
+.wa svg {
+  width: 30px;
+  height: 30px;
+  color: #fff;
+}
+
+
+/* =========================================
+   15. HERO LABELS AND TRUST INDICATORS
+   Small badges and supporting credibility details
+   ========================================= */
+
+/* Small pill-shaped hero label */
+.htag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border-radius: 999px;
+  padding: 6px 14px 6px 10px;
+  font-weight: 700;
+  font-size: .8rem;
+  margin-bottom: 14px;
+}
+
+/* Status indicator inside the hero label */
+.htag i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--green);
+}
+
+/* Flexible row of trust indicators */
+.trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  font-weight: 700;
+  font-size: .85rem;
+  margin: 0 0 20px;
+  color: #4a2a18;
+}
+
+/* Prevent individual trust labels from wrapping */
+.trust span {
+  white-space: nowrap;
+}
+
+
+/* =========================================
+   16. DECORATIVE SEAL
+   Positioned badge or logo overlay in the hero
+   ========================================= */
+
+/* Place the seal at the bottom-right of its container */
+.seal {
+  position: absolute;
+  width: 104px;
+  right: 14px;
+  bottom: 14px;
+  filter: drop-shadow(0 8px 14px rgba(60, 20, 8, .35));
+}
+
+/* Make the seal smaller on mobile devices */
+@media (max-width: 860px) {
+  .seal {
+    width: 84px;
+    right: 14px;
+    bottom: 12px;
+  }
+}
+
